@@ -1,5 +1,5 @@
 ---
 layout: archive
-title: Writing
-permalink: /writing
+title: All Posts
+permalink: /posts
 ---
