@@ -12,3 +12,10 @@ I am compiling a list of resources I am using myself as I dive into CTI and hope
 This will not include any information on recommended background knowledge, but to get the most out of these resources you should have some familiarity with cybersecurity. 
 
 ## Books
+
+
+## Blogs
+
+
+## Twitter
+
