@@ -18,4 +18,5 @@ This will not include any information on recommended background knowledge, but t
 
 
 ## Twitter
-
+- Kevin Holvoet [@digihash](https://twitter.com/digihash)
+- 
