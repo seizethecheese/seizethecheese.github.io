@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Welcome to Lagrange!
+title: Welcome!
 permalink: /about
 ---
 
-Lagrange is a minimalist Jekyll theme. The purpose of this theme is to provide a simple, clean, content-focused blogging platform for your personal site or blog. Below you can find everything you need to get started.
+This is my blog where I post about cybersecurity things, mostly CTI, DFIR and MA/RE.
 
-### Questions?
+I'm a cybersecurity analyst working in a SOC doing threat hunting, detection engineering. and incident response. My path into cyber started by doing a BSc in Computer Science I then worked in helpdesk before moving into my first security role as an IDAM engineer. 
 
-This theme is completely free and open source software. You may use it however you want, as it is distributed under the [MIT License](http://choosealicense.com/licenses/mit/). If you are having any problems, any questions or suggestions, feel free to [tweet at me](https://twitter.com/intent/tweet?text=My%question%about%Lagrange%is:%&amp;via=paululele), or [file a GitHub issue](https://github.com/lenpaul/lagrange/issues/new).
+My other interests include languages (learning Russian and Norwegian), gardening,  history (studying a BA in History part time), and memeing on twitter.
