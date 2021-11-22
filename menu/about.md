@@ -2,6 +2,7 @@
 layout: page
 title: Welcome!
 permalink: /about
+image: me.png
 ---
 
 This is my blog where I post about cybersecurity things, mostly CTI, DFIR and MA/RE.
