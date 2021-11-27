@@ -9,8 +9,8 @@ google-ID: ''
 menu:
 - {name: 'About',   url: 'about.html'}
 - {name: 'Contact', url: 'contact.html'}
-- {name: 'CTI Resources', url: 'reading.html'}
-- {name: 'MA/RE Resources', url: 'reading.html'}
+- {name: 'CTI Resources', url: 'cti.html'}
+- {name: 'MA/RE Resources', url: 'ma.html'}
 - {name: 'Reading List', url: 'reading.html'}
 - {name: 'All Posts', url: 'posts.html'}
 
