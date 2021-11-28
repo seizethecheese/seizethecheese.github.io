@@ -1,6 +1,6 @@
 ---
 layout: page
-title: MA/RE Rsources
+title: MA Rsources
 permalink: /ma
 ---
 
