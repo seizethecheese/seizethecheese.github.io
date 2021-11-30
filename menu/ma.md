@@ -13,6 +13,9 @@ This will not include any information on recommended background knowledge, but t
 ## Books
 - Practical Malware Analysis - [https://nostarch.com/malware](https://nostarch.com/malware)
 
+## Reference Websites
+- MalAPI - [https://malapi.io](https://malapi.io)
+
 ## Challenges
 - Flare-on - [https://flare-on.com](https://flare-on.com)
 - Ma's Reversing - [http://3564020356.org](http://3564020356.org)
