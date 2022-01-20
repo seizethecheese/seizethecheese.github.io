@@ -4,11 +4,31 @@ title: october-skylark-bravo-potato
 permalink: /post
 ---
 
-## Analysis of october-skylark-bravo-potato
+# Analysis of october-skylark-bravo-potato
 
-Source: https://bazaar.abuse.ch/sample/0d9facf6b7073de4e3db19eb64e80589d98cfe35b66942191390a891bb8b241c
+october-skylark-bravo-potato is a sample I downloaded from MalwareBazaar that was uploaded by the Swiss CERT GovCERT.ch, a link to the sample is below. The bulk of this analysis is based on techniques I have learned from [@HuskyHacksMK](https://twitter.com/HuskyHacksMK)'s Practical Malware Analysis & Triage course.
+
+Sample source: [MalwareBazaar](https://bazaar.abuse.ch/sample/0d9facf6b7073de4e3db19eb64e80589d98cfe35b66942191390a891bb8b241c)
+
+## Static Analysis
 
 ### File hashes:
+I pulled the below hashes using hashcalc.
+
 MD5		82a4d3168c075cfce19a565d510ae3fb
 SHA1	c35bcac3c67badcaffd60f813363b6fbcef2baf7
 SHA256	32c1aa1f6464765a5dbb13e4147103c24aa5dc28
+
+### VirusTotal
+I was able to find a hit when searching the file hash in VT. Interestingly I received no results when searching any of the hashes in google.
+
+VirusTotal: https://www.virustotal.com/gui/file/0d9facf6b7073de4e3db19eb64e80589d98cfe35b66942191390a891bb8b241c
+
+### Strings
+I used floss to pull all strings from the sample.
+
+There are plenty of strings in this file, the majority of which are of no real interest.
+
+That said, "SOFTWARE\Borland\Delphi\RTL" indicates at least 1 part of this sample is written in Delphi. But the string that really stuck out to me is "AutoHotkeys", could this sample leverage AutoHotKey in order to impersonate human keyboard input?  
+
+### PEStudio
