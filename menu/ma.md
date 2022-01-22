@@ -22,3 +22,10 @@ This will not include any information on recommended background knowledge, but t
 
 ## Malware
 - vx-underground - [https://vx-underground.org](https://vx-underground.org)
+- MalwareBazaar - [https://bazaar.abuse.ch](https://bazaar.abuse.ch)
+- theZoo - [https://thezoo.morirt.com](https://thezoo.morirt.com)
+
+# Tools
+- CyberChef - [https://cyberchef.immersivelabs.online](https://cyberchef.immersivelabs.online)
+- VirusTotal - [https://www.virustotal.com](https://www.virustotal.com)
+- UnpacMe - [https://www.unpac.me/](https://www.unpac.me/)
