@@ -11,3 +11,4 @@ A list of books I have read and recommend.
 - Active Measures - Thomas Rid
 - Dark Territory - Frank Kaplan
 - The Cuckoo's Egg - Cliff Stoll
+- Sandworm: A New Era of Cyberwar and the Hunt for the Kremlin's Most Dangerous Hackers - Andy Greenberg
