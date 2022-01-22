@@ -1,6 +1,6 @@
 ---
 layout: page
-title: CTI Rsources
+title: CTI Resources
 permalink: /cti
 ---
 
@@ -12,9 +12,13 @@ This will not include any information on recommended background knowledge, but t
 
 Let me know if you have anything you think I should include.
 
+## Guides
+- [A Cyber Threat Intelligence Self-Study Plan: Part 1](https://medium.com/katies-five-cents/a-cyber-threat-intelligence-self-study-plan-part-1-968b5a8daf9a)
 
 ## Blogs
-
+- [Katie’s Five Cents](https://medium.com/katies-five-cents)
+- [Stranded on Pylos](https://pylos.co)
+- [Active Response](http://www.activeresponse.org)
 
 ## Twitter
 - Kevin Holvoet - [@digihash](https://twitter.com/digihash)
@@ -28,3 +32,4 @@ Let me know if you have anything you think I should include.
 - Kim Zetter - [@KimZetter](https://twitter.com/KimZetter)
 - Wylie Newmark - [@WylieNewmark](https://twitter.com/WylieNewmark)
 - Chris Bing - [@Bing_Chris](https://twitter.com/Bing_Chris)
+- Christian Paredes - [@CYINT_dude](https://twitter.com/CYINT_dude)
