@@ -1,6 +1,6 @@
 ---
 layout: page
-title: MA Rsources
+title: MA Resources
 permalink: /ma
 ---
 
@@ -35,3 +35,4 @@ This will not include any information on recommended background knowledge, but t
 - CyberChef - [https://cyberchef.immersivelabs.online](https://cyberchef.immersivelabs.online)
 - VirusTotal - [https://www.virustotal.com](https://www.virustotal.com)
 - UnpacMe - [https://www.unpac.me/](https://www.unpac.me/)
+- AbuseIPDB - [https://www.abuseipdb.com](https://www.abuseipdb.com)

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: IR Rsources
+title: IR Resources
 permalink: /ir
 ---
 
