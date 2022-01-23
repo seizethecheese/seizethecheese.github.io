@@ -13,6 +13,12 @@ This will not include any information on recommended background knowledge, but t
 ## Books
 - Practical Malware Analysis - [https://nostarch.com/malware](https://nostarch.com/malware)
 
+## Twitter
+- Maddie Stone - [@maddiestone](https://twitter.com/maddiestone)
+- Jonathan Reiter - [@jon__reiter](https://twitter.com/jon__reiter)
+- Vitali Kremez - [@VK_Intel](https://twitter.com/VK_Intel)
+- Aleksandra Doniec - [@hasherezade](https://twitter.com/hasherezade)
+
 ## Reference Websites
 - MalAPI - [https://malapi.io](https://malapi.io)
 
