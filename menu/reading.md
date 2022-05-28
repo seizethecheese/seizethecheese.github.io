@@ -8,12 +8,13 @@ A list of books and papers/reports I have read and recommend.
 
 ## Books
 
+- The Cuckoo's Egg - Cliff Stoll
 - The Hacker and the State - Ben Buchanan
 - Countdown to Zero Day - Kim Zetter
+- Sandworm: A New Era of Cyberwar and the Hunt for the Kremlin's Most Dangerous Hackers - Andy Greenberg
 - Active Measures - Thomas Rid
 - Dark Territory - Frank Kaplan
-- The Cuckoo's Egg - Cliff Stoll
-- Sandworm: A New Era of Cyberwar and the Hunt for the Kremlin's Most Dangerous Hackers - Andy Greenberg
+
 
 ## Papers and Reports
 - Mandiant APT1 Report - [APT1: Exposing One of China's Cyber Espionage Units](https://www.mandiant.com/resources/apt1-exposing-one-of-chinas-cyber-espionage-units)
