@@ -14,6 +14,8 @@ Let me know if you have anything you think I should include.
 
 ## Guides
 - [A Cyber Threat Intelligence Self-Study Plan: Part 1](https://medium.com/katies-five-cents/a-cyber-threat-intelligence-self-study-plan-part-1-968b5a8daf9a)
+- [CTI 101 Student Handout](https://klrgrz.medium.com/cti-101-student-handout-42c1441d3519)
+- [Introducing the Mandiant Cyber Threat Intelligence (CTI) Analyst Core Competencies Framework](https://www.mandiant.com/resources/cti-analyst-core-competencies-framework)
 
 ## Blogs
 - [Katie’s Five Cents](https://medium.com/katies-five-cents)
@@ -21,6 +23,7 @@ Let me know if you have anything you think I should include.
 - [Active Response](http://www.activeresponse.org)
 
 ## Twitter
+- Andy Piazza - [@klrgrz](https://twitter.com/klrgrz)
 - Kevin Holvoet - [@digihash](https://twitter.com/digihash)
 - Blake Djavaherian - [@badtakeblake](https://twitter.com/badtakeblake)
 - Michael Cloppert - [@mikecloppert](https://twitter.com/mikecloppert)
