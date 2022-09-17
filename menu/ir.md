@@ -15,7 +15,7 @@ This will not include any information on recommended background knowledge, but t
 
 ## Twitter
 - Lesley Carhart - [@hacks4pancakes](https://twitter.com/hacks4pancakes)
-- Florian Roth - [https://twitter.com/cyb3rops](https://twitter.com/cyb3rops)
+- Florian Roth - [@cyb3rops](https://twitter.com/cyb3rops)
 - Jai Minton - [@CyberRaiju](https://twitter.com/CyberRaiju)
 - Ricky - [@Teck923](https://twitter.com/Teck923)
 - Max Malyutin - [@Max_Mal_](https://twitter.com/Max_Mal_)
