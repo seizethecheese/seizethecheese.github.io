@@ -10,7 +10,7 @@ permalink: /tycoon-2fa-operator
 
 ## TL;DR
 
-On 4 March 2026, Europol and Microsoft announced a coordinated takedown of the Tycoon 2FA phishing-as-a-service (PhaaS) platform, seizing 330 domains and naming **Saad Fridi**, based in Pakistan, as the platform's primary developer. This post documents the open source investigation that arrived at the same attribution independently, starting from aliases exposed in a Sekoia threat intelligence report and pivoting through many different sources.
+On 4 March 2026, Europol and Microsoft announced a coordinated takedown of the Tycoon 2FA phishing-as-a-service (PhaaS) platform, seizing 330 domains and naming **Saad Fridi**, based in Pakistan, as the platform's primary developer. This post documents the open source investigation that arrived at the same attribution independently, starting from aliases exposed in a Sekoia threat intelligence report and pivoting through many sources.
 
 ---
 
@@ -34,7 +34,7 @@ Legal action was also taken against multiple individuals suspected of running th
 
 ## Methodology
 
-The investigation relied on almost exclusively on **pivoting** — an OSINT technique where a known data point such as an alias, email address, or domain is used as a starting point to surface new, previously unknown information about the same target. Each step in the chain below begins with something established in the previous step and uses it to identify a new account, platform, or piece of infrastructure.
+The investigation relied almost exclusively on **pivoting** — an OSINT technique where a known data point such as an alias, email address, or domain is used as a starting point to surface new, previously unknown information about the same target. Each step in the chain below begins with something established in the previous step and uses it to identify a new account, platform, or piece of infrastructure.
 
 Threat actors who have been active online for many years leave a trail of bread crumbs, so let's follow them.
 
@@ -68,7 +68,7 @@ While **Mr_XaaD** and **Mr.XaaD** are not an exact string match, the similarity 
 
 ## Step 3: @Ra0saad → Facebook RaoX44D
 
-Reviewing earlier posts on the @Ra0saad X account, a [2016 post titled "Like me"](https://www.facebook.com/RaoX44D/posts/870883589677600) links directly to a Facebook profile operating under the handle **RaoX44D**.
+Reviewing earlier posts on the @Ra0saad X account, I found a [2016 post titled "Like me"](https://www.facebook.com/RaoX44D/posts/870883589677600) that links directly to a Facebook profile operating under the handle **RaoX44D**.
 
 This is a self-referential cross-platform link — the @Ra0saad account is actively directing its own followers to the RaoX44D Facebook page, meaning the operator of both accounts is the same person. The significance of this step is that RaoX44D now becomes a **common node**: an identifier that connects the Mr_XaaD alias on one side to the SaaadFridi alias on the other, as shown in Step 4 below.
 
@@ -90,7 +90,7 @@ This is the pivotal overlap in the investigation. The RaoX44D Facebook page had 
 
 The [earliest video](https://www.youtube.com/watch?v=FpKE3mIX3-o) posted to the @saadfridi7784 channel, titled *"admin file finder for bypassing by mr.xaad"*, contains two useful items in its description: a link to the domain `anon-spider[.]tk`, and a reference to the **Mr.XaaD** Facebook account. The video content itself is notable, it is a hacking tool tutorial, consistent with the defacement activity observed on Zone-H and the broader hacktivist community links shown later.
 
-The domain `anon-spider[.]tk` is an additional pivot point and also contextually interesting beyond its investigative value. The Tycoon Group's commercial website `tycoongroup[.]ws` features a prominent spider, and the word "spider" appearing in an early domain linked to the same individual, years before Tycoon 2FA existed, may reflect a persistent personal aesthetic  that carried through into the branding of his later commercial operation.
+The domain `anon-spider[.]tk` is an additional pivot point and also contextually interesting beyond its investigative value. The Tycoon Group's commercial website `tycoongroup[.]ws` features a prominent spider, and the word "spider" appearing in an early domain linked to the same individual, years before Tycoon 2FA existed, may reflect a persistent personal aesthetic that carried through into the branding of his later commercial operation.
 
 ![anon spider youtube](<../assets/img/anon_spider_yt.png> "YouTube video description linking to anon-spider.tk")
 
