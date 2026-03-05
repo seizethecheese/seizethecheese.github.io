@@ -36,7 +36,7 @@ Legal action was also taken against multiple individuals suspected of running th
 
 The investigation relied on almost exclusively on **pivoting** — an OSINT technique where a known data point such as an alias, email address, or domain is used as a starting point to surface new, previously unknown information about the same target. Each step in the chain below begins with something established in the previous step and uses it to identify a new account, platform, or piece of infrastructure.
 
-Threat actors who have been active online for many years leave a trail of bread crumbs, so lets follow them.
+Threat actors who have been active online for many years leave a trail of bread crumbs, so let's follow them.
 
 ---
 
@@ -133,31 +133,25 @@ To independently corroborate the date of birth, I cross-referenced the email add
 | X/Twitter | @Ra0saad |
 | YouTube | @saadfridi7784 |
 
-[**Note for author: consider adding a confidence assessment here — e.g. "high confidence" with a brief note on what would constitute definitive confirmation (e.g. official law enforcement statement, which has now effectively been provided by the Europol action). Also worth noting that the education detail (PAK Polytechnic Institute) does not appear in the investigation steps above — add a Step or a note in this section explaining how that was sourced.**]
-
 ---
 
 ## Additional Context
 
 ### Links to Pakistani Nationalist Hacking Groups
 
-We identified links between Fridi and Pakistani nationalist hacking communities including **TeamLeets** and **PakXploiters**. [**Note for author: expand this section with specific details — what those groups do, when they were active, what Fridi's specific role or association was (member, contributor, affiliated?), and links to any public reporting on them. Your original notes reference two sources each for TeamLeets and PakXploiters — these should be linked here.**]
-
-This is consistent with the Zone-H defacement activity observed in Step 2. Website defacement is a well-documented entry point into more serious cybercrime — actors begin by compromising and vandalising websites for reputational gain within hacking communities, developing the technical skills and criminal contacts that can eventually lead to more sophisticated and financially motivated activity. Fridi's trajectory from defacement and hacktivist tooling tutorials in 2015–2016 to operating one of the world's largest phishing platforms by 2023 is a clear illustration of this pipeline.
+I also identified links between Fridi and Pakistani nationalist hacking communities including **TeamLeets** and **PakXploiters**. I see this as an excellent area for further investigation but have not gone further down this route due to time constraints.
 
 ### The Spider Motif
 
-As a contextual detail, the domain `anon-spider[.]tk`, linked to Fridi circa 2016, shares a thematic element with the Tycoon Group's commercial website `tycoongroup[.]ws`, which features a prominent spider image. While this is not direct evidence, it is consistent with the other attribution links and may reflect a persistent personal identifier carried across years of activity. [**Note for author: if you have a screenshot of the tycoongroup.ws spider imagery prior to the takedown, this would be worth including here for the visual comparison.**]
+As a contextual detail, the domain `anon-spider[.]tk`, linked to Fridi circa 2016, shares a thematic element with the Tycoon Group's commercial website `tycoongroup[.]ws`, which features a prominent spider image. While this is not direct evidence, it is consistent with the other attribution links and may reflect a persistent personal identifier carried across years of activity. 
 
 ---
 
 ## Conclusion
 
-Starting from a handful of aliases in a threat intelligence report, open source investigation techniques allowed us to build a high-confidence attribution to a single individual — one subsequently confirmed by Europol and named publicly in coverage of the March 2026 takedown. This is a relatively unusual outcome in OSINT attribution: the open source findings aligning with official law enforcement action provides meaningful external validation of the methodology.
+Starting from a handful of aliases in a threat intelligence report, open source investigation techniques allowed me to build a high-confidence attribution to a single individual, one subsequently confirmed by Europol and named publicly in coverage of the March 2026 takedown.
 
-The investigation illustrates several core OSINT principles: that persistent online activity leaves overlapping traces across platforms; that self-reported activity such as Zone-H defacements and YouTube tutorials can be just as valuable as passively collected data; and that infrastructure overlap — the same email, domain, or account appearing across multiple personas — is often the thread that ties an attribution together.
-
-It is also a case study in threat actor development. The earliest evidence of Fridi's online activity dates to around 2015–2016, when he was posting hacking tool tutorials on YouTube and claiming defacements on Zone-H in the company of Pakistani nationalist hacking groups. Nearly a decade later, the same individual was operating one of the most prolific phishing platforms ever documented, responsible for tens of millions of fraudulent emails per month and unauthorised access to nearly 100,000 organisations worldwide. The open source trail connecting those two points was never fully erased.
+But more interestingly, this shows how a threat actor develops over time. The earliest evidence of Fridi's online activity dates to around 2015–2016, when he was posting hacking tool tutorials on YouTube and claiming defacements on Zone-H in the company of Pakistani nationalist hacking groups. Nearly a decade later, the same individual was operating one of the most prolific phishing platforms ever documented, responsible for tens of millions of fraudulent emails per month and unauthorised access to nearly 100,000 organisations worldwide.
 
 ---
 
