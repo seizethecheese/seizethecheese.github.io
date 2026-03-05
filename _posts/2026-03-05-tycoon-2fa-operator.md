@@ -4,8 +4,6 @@ title: Breaking Saad - phinding a PhaaS operator
 permalink: /tycoon-2fa-operator
 ---
 
-# Breaking Saad - phinding a PhaaS operator
-
 > Note: All of the information used in this analysis is publicly available or derived from open sources. A full list of sources and links is at the end of the post.
 
 ---
