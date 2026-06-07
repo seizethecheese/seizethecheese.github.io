@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>7-0 · Rugby World Cup XV Builder</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+  <title>RWC Challenge · Rugby World Cup XV Builder</title>
   <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html,body{height:100%;background:#0e1520;}body{-webkit-font-smoothing:antialiased;}#root{min-height:100%;}</style>
 </head>
 <body>
@@ -178,111 +178,189 @@ const FLAG_BG = {
   "Namibia":"#003d00","Portugal":"#006600","Chile":"#d52b1e","default":"#1a3a2a",
 };
 
-// ── Modifiers (one per team/year — applies when that unit is drafted) ─────────
-// gk=source unit, own=buff own team, tgt=target group, stat=A/D/S, pct=%, cond=special label or null
 const MODIFIERS = {
   // New Zealand
-  "2011|New Zealand": {gk:"hb",own:false,tgt:"ob",stat:"A",pct:-5, cond:null},
-  "2015|New Zealand": {gk:"lf",own:false,tgt:"lf",stat:"S",pct:-15,cond:"Breakdown"},
-  "2019|New Zealand": {gk:"ob",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
-  "2023|New Zealand": {gk:"md",own:true, tgt:"ob",stat:"A",pct:5,  cond:null},
+  "2011|New Zealand": {gk:"hb",own:false,tgt:"ob",stat:"A",pct:-10,cond:null,
+    flavour:"Pinned back. Carter's territorial boot forces wingers to receive the ball behind their own gain line, where they can do nothing."},
+  "2015|New Zealand": {gk:"lf",own:false,tgt:["fr","lo","lf"],stat:"A",pct:-10,cond:null,
+    flavour:"One man, every ruck. McCaw's breakdown mastery disrupts the entire opposition forward structure — all three units lose go-forward ball."},
+  "2019|New Zealand": {gk:"ob",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"Winger as decoy. Ioane and Bridge's pace forces the defence wide, creating space for Goodhue and Barrett to cut back inside."},
+  "2023|New Zealand": {gk:"md",own:true, tgt:"ob",stat:"A",pct:10, cond:null,
+    flavour:"Inside out. Barrett and Lienert-Brown draw in the defensive line, giving the outside backs the width to attack."},
   // South Africa
-  "2011|South Africa":{gk:"fr",own:false,tgt:"lf",stat:"A",pct:-5, cond:null},
-  "2015|South Africa":{gk:"fr",own:false,tgt:"lf",stat:"A",pct:-5, cond:null},
-  "2019|South Africa":{gk:"fr",own:false,tgt:"lf",stat:"A",pct:-5, cond:null},
-  "2023|South Africa":{gk:"fr",own:false,tgt:"fr",stat:"S",pct:-15,cond:"Scrum"},
+  "2011|South Africa":{gk:"fr",own:false,tgt:"lf",stat:"A",pct:-10,cond:null,
+    flavour:"Forward dominance. Bakkies and Beast's set-piece power forces the opposition loose forwards to carry into a wall of Springbok resistance."},
+  "2015|South Africa":{gk:"fr",own:false,tgt:"lf",stat:"A",pct:-10,cond:null,
+    flavour:"Matfield's machine. South Africa's dominant pack pins opposition loose forwards back at source before they even get going."},
+  "2019|South Africa":{gk:"fr",own:false,tgt:"lf",stat:"A",pct:-10,cond:null,
+    flavour:"Nowhere to run. The Bomb Squad's scrum dominance turns the opposition loose forwards' carries into gainless attrition."},
+  "2023|South Africa":{gk:"fr",own:false,tgt:["fr","lo","lf"],stat:"A",pct:-10,cond:null,
+    flavour:"The machine grinds everyone. Kitshoff, Marx and Koch's scrum dominance pins the entire opposition forward pack back, reducing carry effectiveness across all three units."},
   // Australia
-  "2011|Australia":   {gk:"hb",own:true, tgt:"ob",stat:"A",pct:5,  cond:null},
-  "2015|Australia":   {gk:"hb",own:true, tgt:"ob",stat:"A",pct:5,  cond:null},
-  "2019|Australia":   {gk:"fr",own:true, tgt:"lf",stat:"A",pct:5,  cond:null},
-  "2023|Australia":   {gk:"hb",own:true, tgt:"ob",stat:"A",pct:5,  cond:null},
+  "2011|Australia":   {gk:"hb",own:true, tgt:"ob",stat:"A",pct:10, cond:null,
+    flavour:"Will's world. Genia's electric service and Cooper's attacking lines give the back three the ball at pace with space to burn."},
+  "2015|Australia":   {gk:"hb",own:true, tgt:"ob",stat:"A",pct:10, cond:null,
+    flavour:"Foley's timing. Foley's precision and Genia's pace put the outside backs into attacking positions before the cover arrives."},
+  "2019|Australia":   {gk:"fr",own:true, tgt:"lf",stat:"A",pct:10, cond:null,
+    flavour:"Rolling momentum. Sio and Latu's carries get the back row off their heels, Pocock and Hooper arriving with defenders already committed."},
+  "2023|Australia":   {gk:"hb",own:true, tgt:"ob",stat:"A",pct:10, cond:null,
+    flavour:"Ball first, space second. White's quick service finds the back three with time to turn and run before the defensive line sets."},
   // England
-  "2011|England":     {gk:"fr",own:true, tgt:"lf",stat:"D",pct:5,  cond:null},
-  "2015|England":     {gk:"fr",own:true, tgt:"lf",stat:"D",pct:5,  cond:null},
-  "2019|England":     {gk:"lo",own:true, tgt:"lf",stat:"A",pct:5,  cond:null},
-  "2023|England":     {gk:"lo",own:false,tgt:"fr",stat:"S",pct:-5, cond:null},
+  "2011|England":     {gk:"fr",own:true, tgt:"lf",stat:"D",pct:10, cond:null,
+    flavour:"Lancaster's fortress. England's physical front row creates a defensive scrum platform that the back row uses to shut down the gain line."},
+  "2015|England":     {gk:"fr",own:true, tgt:"lf",stat:"D",pct:10, cond:null,
+    flavour:"Scrum as platform. Jones's defensive set piece gives the loosies the position and momentum to choke and poach at will."},
+  "2019|England":     {gk:"lo",own:true, tgt:"lf",stat:"A",pct:10, cond:null,
+    flavour:"Lineout launch. Itoje and Launchbury's dominant lineout gives the back row consistent front-foot ball and first-carry advantage."},
+  "2023|England":     {gk:"lo",own:false,tgt:"fr",stat:"S",pct:-10,cond:null,
+    flavour:"Steel in the air. Itoje and Martin's aerial dominance robs the opposition front row of their set-piece platform before it's even built."},
   // Ireland
-  "2011|Ireland":     {gk:"lo",own:false,tgt:"fr",stat:"S",pct:-5, cond:null},
-  "2015|Ireland":     {gk:"lo",own:false,tgt:"fr",stat:"S",pct:-5, cond:null},
-  "2019|Ireland":     {gk:"lo",own:false,tgt:"fr",stat:"S",pct:-5, cond:null},
-  "2023|Ireland":     {gk:"md",own:true, tgt:"hb",stat:"S",pct:15, cond:"Tempo"},
+  "2011|Ireland":     {gk:"lo",own:false,tgt:"fr",stat:"S",pct:-10,cond:null,
+    flavour:"The steal. O'Callaghan's lineout mastery robs the opposition front row of their set-piece identity before the game has even begun."},
+  "2015|Ireland":     {gk:"lo",own:false,tgt:"fr",stat:"S",pct:-10,cond:null,
+    flavour:"The steal. O'Connell's lineout mastery robs the opposition front row of their set-piece identity before the game has even begun."},
+  "2019|Ireland":     {gk:"lo",own:false,tgt:"fr",stat:"S",pct:-10,cond:null,
+    flavour:"The steal. Toner's lineout disruption robs the opposition front row of their set-piece identity before the game has even begun."},
+  "2023|Ireland":     {gk:"md",own:true, tgt:["hb","md","ob"],stat:"S",pct:10, cond:null,
+    flavour:"The loop and the pass. Ringrose and Henshaw's offloading and vision elevates the specialist skills of every backline unit they play alongside."},
   // France
-  "2011|France":      {gk:"ob",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
-  "2015|France":      {gk:"ob",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
-  "2019|France":      {gk:"ob",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
-  "2023|France":      {gk:"ob",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
+  "2011|France":      {gk:"ob",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"Clerc opens it up. Clerc's finishing threat drags defenders to the wide edge, giving Rougerie and Mermoz the inside lane."},
+  "2015|France":      {gk:"ob",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"French flair from the wing. Huget's pace on the outside stretches the defensive line, creating midfield space Doussain and Michalak exploit."},
+  "2019|France":      {gk:"ob",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"Vakatawa pulls the trigger. The powerful wing draws two defenders wide, releasing Fickou and Doumayrou into space through the middle."},
+  "2023|France":      {gk:"ob",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"Wide threat, inside gain. Penaud's presence drags defenders out wide, leaving Danty with the inside channel to cut back through."},
   // Wales
-  "2011|Wales":       {gk:"lf",own:false,tgt:"hb",stat:"S",pct:-5, cond:null},
-  "2015|Wales":       {gk:"lf",own:false,tgt:"hb",stat:"S",pct:-5, cond:null},
-  "2019|Wales":       {gk:"lf",own:false,tgt:"hb",stat:"S",pct:-5, cond:null},
-  "2023|Wales":       {gk:"lo",own:false,tgt:"fr",stat:"S",pct:-5, cond:null},
+  "2011|Wales":       {gk:"lf",own:false,tgt:"hb",stat:"S",pct:-10,cond:null,
+    flavour:"No fast ball. Warburton and Faletau at the breakdown ensure opposition half-backs receive ruck ball too slow to execute their game."},
+  "2015|Wales":       {gk:"lf",own:false,tgt:"hb",stat:"S",pct:-10,cond:null,
+    flavour:"Warburton's law. Wales's openside nuisance-work ensures opposition half-backs receive ruck ball too slow and too dirty to operate."},
+  "2019|Wales":       {gk:"lf",own:false,tgt:"hb",stat:"S",pct:-10,cond:null,
+    flavour:"Slow ball, broken game. Tipuric and Navidi ensure the half-backs receive ruck ball too slow and too dirty to execute their system."},
+  "2023|Wales":       {gk:"lo",own:false,tgt:"fr",stat:"S",pct:-10,cond:null,
+    flavour:"Alun Wyn's reach. Jones's lineout expertise dismantles the opposition front row's set-piece authority, leaving them without a clean platform."},
   // Scotland
-  "2011|Scotland":    {gk:"hb",own:true, tgt:"ob",stat:"A",pct:5,  cond:null},
-  "2015|Scotland":    {gk:"hb",own:true, tgt:"ob",stat:"A",pct:5,  cond:null},
-  "2019|Scotland":    {gk:"hb",own:true, tgt:"ob",stat:"A",pct:5,  cond:null},
-  "2023|Scotland":    {gk:"ob",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
+  "2011|Scotland":    {gk:"hb",own:true, tgt:"ob",stat:"A",pct:10, cond:null,
+    flavour:"Blair's break. Mike Blair's pace from the ruck gives the outside backs quick, flat ball before the defence can reset."},
+  "2015|Scotland":    {gk:"hb",own:true, tgt:"ob",stat:"A",pct:10, cond:null,
+    flavour:"Laidlaw's release. Greig Laidlaw's sharp service and Russell's timing give the outside backs the ball in space before the cover arrives."},
+  "2019|Scotland":    {gk:"hb",own:true, tgt:"ob",stat:"A",pct:10, cond:null,
+    flavour:"Russell's vision. Finn Russell's long pass and cross-kicks give van der Merwe and Seymour the early ball to cause damage."},
+  "2023|Scotland":    {gk:"ob",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"Pace on the outside, space inside. Van der Merwe's footwork forces the drift defence wide, opening channels for Harris to cut back through."},
   // Argentina
-  "2011|Argentina":   {gk:"fr",own:true, tgt:"lf",stat:"A",pct:5,  cond:null},
-  "2015|Argentina":   {gk:"lf",own:true, tgt:"fr",stat:"A",pct:5,  cond:null},
-  "2019|Argentina":   {gk:"hb",own:true, tgt:"ob",stat:"A",pct:5,  cond:null},
-  "2023|Argentina":   {gk:"lf",own:true, tgt:"fr",stat:"A",pct:5,  cond:null},
+  "2011|Argentina":   {gk:"fr",own:true, tgt:"lf",stat:"A",pct:10, cond:null,
+    flavour:"Pumas power. Argentina's dominant front row creates the front-foot ball that Lobbe and the back row need to carry with real impact."},
+  "2015|Argentina":   {gk:"lf",own:true, tgt:"fr",stat:"A",pct:10, cond:null,
+    flavour:"Loosie drives, prop follows. Lobbe and Fernandez Lobbe's powerful work opens the channels the front row steps into with momentum."},
+  "2019|Argentina":   {gk:"hb",own:true, tgt:"ob",stat:"A",pct:10, cond:null,
+    flavour:"Sanchez pulls the strings. Hernandez's quick delivery and Sanchez's attacking lines give Tuculet and Imhoff the ball in space at pace."},
+  "2023|Argentina":   {gk:"lf",own:true, tgt:"fr",stat:"A",pct:10, cond:null,
+    flavour:"Front-foot ball. Matera and Kremer's powerful carries commit defenders, so the props arrive off their heels to gaps already made."},
   // Italy
-  "2011|Italy":       {gk:"fr",own:true, tgt:"lf",stat:"A",pct:5,  cond:null},
-  "2015|Italy":       {gk:"fr",own:true, tgt:"lf",stat:"A",pct:5,  cond:null},
-  "2019|Italy":       {gk:"fr",own:true, tgt:"lf",stat:"A",pct:5,  cond:null},
-  "2023|Italy":       {gk:"ob",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
+  "2011|Italy":       {gk:"fr",own:true, tgt:"lf",stat:"A",pct:10, cond:null,
+    flavour:"Castrogiovanni's gift. Italy's destructive front row wins the physical battle, giving Parisse and the back row the go-forward ball to run off."},
+  "2015|Italy":       {gk:"fr",own:true, tgt:"lf",stat:"A",pct:10, cond:null,
+    flavour:"Serve Parisse. Italy's front row exists to win the physical battle and feed the ball to Sergio Parisse running at pace off their shoulders."},
+  "2019|Italy":       {gk:"fr",own:true, tgt:"lf",stat:"A",pct:10, cond:null,
+    flavour:"The Parisse platform. Lovotti and Ferrari win the set piece, giving Parisse one last World Cup stage from which to impose himself."},
+  "2023|Italy":       {gk:"ob",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"The rising Azzurri. Menoncello and Padovani's pace on the outside pulls defenders wide, leaving Morisi and Brex to cut back inside."},
   // Japan
-  "2011|Japan":       {gk:"hb",own:true, tgt:"ob",stat:"A",pct:5,  cond:null},
-  "2015|Japan":       {gk:"hb",own:true, tgt:"ob",stat:"A",pct:5,  cond:null},
-  "2019|Japan":       {gk:"lf",own:true, tgt:"hb",stat:"S",pct:15, cond:"Tempo"},
-  "2023|Japan":       {gk:"ob",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
+  "2011|Japan":       {gk:"hb",own:true, tgt:"ob",stat:"A",pct:10, cond:null,
+    flavour:"Tanaka's express. Fumiaki Tanaka's rapid service gives Onozawa and Endo the ball at full pace before the defence can reset."},
+  "2015|Japan":       {gk:"hb",own:true, tgt:"ob",stat:"A",pct:10, cond:null,
+    flavour:"Goromaru's world. Tanaka's quick service releases Goromaru and the back three into the attacking channels that made Japan's 2015 campaign famous."},
+  "2019|Japan":       {gk:"lf",own:true, tgt:["hb","md","ob"],stat:"A",pct:10, cond:null,
+    flavour:"Engine of the miracle. Leitch's ruck work creates the speed of ball that powers Japan's entire backline into attack."},
+  "2023|Japan":       {gk:"ob",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"Matsushima pulls the trigger. The back three's pace and counter-attacking threat draws defenders wide, releasing the midfield to attack inside."},
   // Fiji
-  "2011|Fiji":        {gk:"ob",own:true, tgt:"md",stat:"S",pct:15, cond:"Distribution"},
-  "2015|Fiji":        {gk:"ob",own:true, tgt:"md",stat:"S",pct:15, cond:"Distribution"},
-  "2019|Fiji":        {gk:"ob",own:true, tgt:"hb",stat:"A",pct:5,  cond:null},
-  "2023|Fiji":        {gk:"ob",own:true, tgt:"md",stat:"S",pct:15, cond:"Distribution"},
+  "2011|Fiji":        {gk:"ob",own:true, tgt:["hb","md","ob"],stat:"S",pct:10, cond:null,
+    flavour:"Offload from anywhere. Goneva and Nalaga's counter-attacking chaos creates space and unlocks specialist play across Fiji's entire backline."},
+  "2015|Fiji":        {gk:"ob",own:true, tgt:["hb","md","ob"],stat:"S",pct:10, cond:null,
+    flavour:"Nadolo's gravity. The powerful wing draws defenders wide, creating the space and chaos that unlocks specialist potential across the entire backline."},
+  "2019|Fiji":        {gk:"ob",own:true, tgt:"hb",stat:"A",pct:10, cond:null,
+    flavour:"Wide to narrow. Radradra and Lomano's counter-attacking chaos draws the defence wide, giving the halves room to attack off the breakdown."},
+  "2023|Fiji":        {gk:"ob",own:true, tgt:["hb","md","ob"],stat:"S",pct:10, cond:null,
+    flavour:"Space where there was none. Fiji's counter-attacking back three creates the openings that unlock specialist potential across the entire backline."},
   // Georgia
-  "2011|Georgia":     {gk:"fr",own:true, tgt:"lo",stat:"S",pct:15, cond:"Lineout"},
-  "2015|Georgia":     {gk:"fr",own:true, tgt:"lo",stat:"S",pct:15, cond:"Lineout"},
-  "2019|Georgia":     {gk:"fr",own:true, tgt:"lo",stat:"S",pct:15, cond:"Lineout"},
-  "2023|Georgia":     {gk:"fr",own:true, tgt:"lo",stat:"S",pct:15, cond:"Lineout"},
+  "2011|Georgia":     {gk:"fr",own:true, tgt:["fr","lo","lf"],stat:"D",pct:10, cond:null,
+    flavour:"Scrum feeds the pack. Georgia's dominant set piece creates a defensive platform for all three forward units to impose themselves."},
+  "2015|Georgia":     {gk:"fr",own:true, tgt:["fr","lo","lf"],stat:"D",pct:10, cond:null,
+    flavour:"Scrum feeds the pack. The Lelos' front row dominance builds a defensive foundation that elevates all three forward units."},
+  "2019|Georgia":     {gk:"fr",own:true, tgt:["fr","lo","lf"],stat:"D",pct:10, cond:null,
+    flavour:"Scrum feeds the pack. Georgia's relentless front row gives the entire pack the platform to defend from a position of dominance."},
+  "2023|Georgia":     {gk:"fr",own:true, tgt:["fr","lo","lf"],stat:"D",pct:10, cond:null,
+    flavour:"Scrum feeds the pack. Nariashvili and Chilachava's dominance creates the defensive platform that elevates all three of Georgia's forward units."},
   // Samoa
-  "2011|Samoa":       {gk:"lf",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
-  "2015|Samoa":       {gk:"lf",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
-  "2019|Samoa":       {gk:"lf",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
-  "2023|Samoa":       {gk:"lf",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
+  "2011|Samoa":       {gk:"lf",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"Stowers clears the path. Stowers and Fa'asavalu crash through the first defenders, leaving the midfield to hit a gap already torn open."},
+  "2015|Samoa":       {gk:"lf",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"Ioane opens the door. TJ Ioane and Treviranus's physical carry game commits defenders, giving the midfield a running line through broken territory."},
+  "2019|Samoa":       {gk:"lf",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"Pacific battering ram. Jack Lam and TJ Ioane crash through two defenders, leaving the midfield to hit a broken defensive line at pace."},
+  "2023|Samoa":       {gk:"lf",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"Lam's legacy. The Samoan loose forwards continue their tradition of smashing through the first two defenders before the midfield arrives."},
   // Tonga
-  "2011|Tonga":       {gk:"fr",own:true, tgt:"lf",stat:"S",pct:15, cond:"Offload"},
-  "2015|Tonga":       {gk:"fr",own:true, tgt:"lf",stat:"S",pct:15, cond:"Offload"},
-  "2019|Tonga":       {gk:"fr",own:true, tgt:"lf",stat:"S",pct:15, cond:"Offload"},
-  "2023|Tonga":       {gk:"fr",own:true, tgt:"lf",stat:"S",pct:15, cond:"Offload"},
+  "2011|Tonga":       {gk:"fr",own:true, tgt:["fr","lo","lf"],stat:"A",pct:10, cond:null,
+    flavour:"Tameifuna starts the fire. The immovable front row softens the defence so thoroughly that all three forward units arrive to broken lines."},
+  "2015|Tonga":       {gk:"fr",own:true, tgt:["fr","lo","lf"],stat:"A",pct:10, cond:null,
+    flavour:"Soft hands from hard work. Tameifuna's scrum power softens the entire defensive line — all three forward units carry into already-beaten defenders."},
+  "2019|Tonga":       {gk:"fr",own:true, tgt:["fr","lo","lf"],stat:"A",pct:10, cond:null,
+    flavour:"The engine room fires. When Tonga's props dominate the scrum, all three forward units find defenders softened and off-balance."},
+  "2023|Tonga":       {gk:"fr",own:true, tgt:["fr","lo","lf"],stat:"A",pct:10, cond:null,
+    flavour:"The engine room fires for all. Tonga's physical front row softens defences across the entire forward battle, not just at the scrum."},
   // Canada
-  "2011|Canada":      {gk:"fr",own:true, tgt:"lf",stat:"D",pct:5,  cond:null},
-  "2015|Canada":      {gk:"fr",own:true, tgt:"lf",stat:"D",pct:5,  cond:null},
-  "2019|Canada":      {gk:"fr",own:true, tgt:"lf",stat:"D",pct:5,  cond:null},
+  "2011|Canada":      {gk:"fr",own:true, tgt:"lf",stat:"D",pct:10, cond:null,
+    flavour:"Canadian grit. Buydens and the front row establish physical dominance at the scrum, giving Carpenter and Kleeberger a defensive platform to choke from."},
+  "2015|Canada":      {gk:"fr",own:true, tgt:"lf",stat:"D",pct:10, cond:null,
+    flavour:"Physical foundation. Canada's tight five builds the defensive platform that Ardron and Moonlight use to shut down the gain line."},
+  "2019|Canada":      {gk:"fr",own:true, tgt:"lf",stat:"D",pct:10, cond:null,
+    flavour:"Built to last. Canada's forward pack creates defensive momentum that the loose forwards use to impose themselves at the breakdown."},
   // Romania
-  "2011|Romania":     {gk:"fr",own:false,tgt:"fr",stat:"S",pct:-15,cond:"Scrum"},
-  "2015|Romania":     {gk:"fr",own:false,tgt:"fr",stat:"S",pct:-15,cond:"Scrum"},
-  "2023|Romania":     {gk:"fr",own:false,tgt:"fr",stat:"S",pct:-15,cond:"Scrum"},
+  "2011|Romania":     {gk:"fr",own:false,tgt:["fr","lo","lf"],stat:"S",pct:-10,cond:null,
+    flavour:"The oak against all comers. Romania's scrum tradition creates pressure that compromises the specialist skills of all three opposition forward units."},
+  "2015|Romania":     {gk:"fr",own:false,tgt:["fr","lo","lf"],stat:"S",pct:-10,cond:null,
+    flavour:"Eastern European scrum school. Romania's front row expertise creates pressure that disrupts the specialist work of the entire opposition pack."},
+  "2023|Romania":     {gk:"fr",own:false,tgt:["fr","lo","lf"],stat:"S",pct:-10,cond:null,
+    flavour:"The old knowledge. Romania's scrum mastery creates a pressure that compromises specialist skills across the entire opposition forward pack."},
   // USA
-  "2011|USA":         {gk:"ob",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
-  "2015|USA":         {gk:"ob",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
-  "2019|USA":         {gk:"ob",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
+  "2011|USA":         {gk:"ob",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"Ngwenya's afterburners. The fastest man at the 2007 World Cup creates defensive panic on the outside, leaving the midfield with space to attack inside."},
+  "2015|USA":         {gk:"ob",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"Eagles spread the field. Scully's pace and Wyles's intelligence on the outside stretch the defensive line, giving the midfield room to work."},
+  "2019|USA":         {gk:"ob",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"Brache and Iosefo's pace. The USA's athletic back three force the defence wide, creating inside channels for Lasike and Campbell to exploit."},
   // Russia
-  "2011|Russia":      {gk:"fr",own:true, tgt:"lo",stat:"D",pct:5,  cond:null},
-  "2019|Russia":      {gk:"fr",own:true, tgt:"lo",stat:"D",pct:5,  cond:null},
+  "2011|Russia":      {gk:"fr",own:true, tgt:"lo",stat:"D",pct:10, cond:null,
+    flavour:"Soviet set piece. Russia's powerful front row builds a foundation that gives the locks the defensive foothold to impose their physicality."},
+  "2019|Russia":      {gk:"fr",own:true, tgt:"lo",stat:"D",pct:10, cond:null,
+    flavour:"Forward power. Russia's domestic scrum tradition creates the platform that gives the locks the defensive foothold to impose themselves."},
   // Uruguay
-  "2015|Uruguay":     {gk:"fr",own:true, tgt:"lf",stat:"A",pct:5,  cond:null},
-  "2019|Uruguay":     {gk:"fr",own:true, tgt:"lf",stat:"A",pct:5,  cond:null},
-  "2023|Uruguay":     {gk:"fr",own:true, tgt:"lf",stat:"A",pct:5,  cond:null},
+  "2015|Uruguay":     {gk:"fr",own:true, tgt:"lf",stat:"A",pct:10, cond:null,
+    flavour:"Ormaechea leads the charge. Uruguay's improving front row creates go-forward ball that the loosies use to impose their physical carrying game."},
+  "2019|Uruguay":     {gk:"fr",own:true, tgt:"lf",stat:"A",pct:10, cond:null,
+    flavour:"Los Teros' engine room. Uruguay's increasingly competitive front row creates the platform the back row uses to punch well above their weight."},
+  "2023|Uruguay":     {gk:"fr",own:true, tgt:"lf",stat:"A",pct:10, cond:null,
+    flavour:"The scrum builds momentum. Uruguay's front row creates the front-foot ball that Gaminara and the back row need to carry with real impact."},
   // Namibia
-  "2011|Namibia":     {gk:"lf",own:false,tgt:"hb",stat:"S",pct:-5, cond:null},
-  "2015|Namibia":     {gk:"lf",own:false,tgt:"hb",stat:"S",pct:-5, cond:null},
-  "2019|Namibia":     {gk:"lf",own:false,tgt:"hb",stat:"S",pct:-5, cond:null},
-  "2023|Namibia":     {gk:"lf",own:false,tgt:"hb",stat:"S",pct:-5, cond:null},
+  "2011|Namibia":     {gk:"lf",own:false,tgt:"hb",stat:"S",pct:-10,cond:null,
+    flavour:"The Burger factor. Jacques Burger's poaching and chop-tackle game reduces even the best-organised opposition ruck ball to controlled disaster."},
+  "2015|Namibia":     {gk:"lf",own:false,tgt:"hb",stat:"S",pct:-10,cond:null,
+    flavour:"Burger in his prime. Namibia's world-class openside brings elite breakdown disruption, denying the opposition half-backs the clean ruck ball they need."},
+  "2019|Namibia":     {gk:"lf",own:false,tgt:"hb",stat:"S",pct:-10,cond:null,
+    flavour:"Burger's last stand. Even in the twilight of his career, Jacques Burger's breakdown disruption makes opposition ruck ball unpredictable."},
+  "2023|Namibia":     {gk:"lf",own:false,tgt:"hb",stat:"S",pct:-10,cond:null,
+    flavour:"Conradie carries the torch. Namibia's loose forwards continue Burger's tradition of breakdown disruption, making opposition half-back play a lottery."},
   // Portugal / Chile
-  "2023|Portugal":    {gk:"hb",own:true, tgt:"ob",stat:"A",pct:5,  cond:null},
-  "2023|Chile":       {gk:"ob",own:true, tgt:"md",stat:"A",pct:5,  cond:null},
+  "2023|Portugal":    {gk:"hb",own:true, tgt:"ob",stat:"A",pct:10, cond:null,
+    flavour:"Marques on the burst. Samuel Marques's explosive service and running lines give Sousa Guedes and the back three the early ball to attack in space."},
+  "2023|Chile":       {gk:"ob",own:true, tgt:"md",stat:"A",pct:10, cond:null,
+    flavour:"Wide and willing. Chile's athletic back three stretch the defence to its limits, creating inside channels for Garafulic and Saavedra to run through."},
 };
 
 // ── Engine functions ──────────────────────────────────────────────────────────
@@ -362,7 +440,8 @@ const testVs = (rax, cy, ct) => {
     let oppA=cx[g].A, oppD=cx[g].D, oppS=cx[g].S;
     const fired = [];
     for (const mod of activeMods) {
-      if (mod.tgt !== g) continue;
+      const tgts = Array.isArray(mod.tgt) ? mod.tgt : [mod.tgt];
+      if (!tgts.includes(g)) continue;
       const tgtUnit = mod.own ? rax[g] : cx[g];
       if (mod.cond && tgtUnit.label !== mod.cond) continue;
       const f = 1 + mod.pct/100;
@@ -419,9 +498,12 @@ const fmtMod = (mod) => {
   const dir = mod.own ? "Own" : "Opp";
   const col = mod.own ? C.win : C.lose;
   const sign = mod.pct > 0 ? "+" : "";
-  const tgt = GK_LABEL[mod.tgt].split(" ")[0]; // "Front", "Locks", etc.
+  const isMulti = Array.isArray(mod.tgt);
+  const tgtLabel = isMulti
+    ? (mod.tgt.every(t=>["fr","lo","lf"].includes(t)) ? "All Fwds" : "All Backs")
+    : GK_LABEL[mod.tgt].split(" ")[0];
   const cond = mod.cond ? ` · if ${mod.cond}` : "";
-  return {text: `${dir} ${tgt} ${mod.stat} ${sign}${mod.pct}%${cond}`, col, isLarge: Math.abs(mod.pct) >= 15};
+  return {text:`${dir} ${tgtLabel} ${mod.stat} ${sign}${mod.pct}%${cond}`, col, isLarge:isMulti};
 };
 
 function UnitCard({gk, unit, onClick, disabled, teamColor, dimmed}) {
@@ -475,12 +557,20 @@ function UnitCard({gk, unit, onClick, disabled, teamColor, dimmed}) {
           </div>
           <div style={{marginTop:7,fontSize:10,color:C.gold,fontWeight:700,
             letterSpacing:.4,fontFamily:F}}>Special: {unit.label}</div>
-          {mf&&(
-            <div style={{marginTop:5,fontSize:9,fontFamily:F,
-              color:mf.col,letterSpacing:.2,display:"flex",alignItems:"center",gap:3,
-              borderTop:`1px solid ${C.border}`,paddingTop:5}}>
-              <span style={{fontSize:10,fontWeight:700}}>{mf.isLarge?"⚡":"→"}</span>
-              <span style={{opacity:.9}}>{mf.text}</span>
+          {unitMod&&(
+            <div style={{marginTop:5,borderTop:`1px solid ${C.border}`,paddingTop:5}}>
+              <div style={{fontSize:9,fontFamily:F,color:mf.col,letterSpacing:.2,
+                display:"flex",alignItems:"center",gap:3,
+                marginBottom:unitMod.flavour?4:0}}>
+                <span style={{fontSize:10,fontWeight:700}}>{mf.isLarge?"⚡":"→"}</span>
+                <span style={{opacity:.9}}>{mf.text}</span>
+              </div>
+              {unitMod.flavour&&(
+                <div style={{fontSize:10,color:C.dim,fontFamily:F,
+                  lineHeight:1.45,fontStyle:"italic",letterSpacing:.1}}>
+                  {unitMod.flavour}
+                </div>
+              )}
             </div>
           )}
         </>:(
@@ -572,15 +662,23 @@ function BattleRow({gk, mine, opp, won, draw, fired}) {
       </div>
       {fired&&fired.length>0&&(
         <div style={{marginTop:6,paddingTop:6,borderTop:`1px solid ${C.border}`,
-          display:"flex",flexWrap:"wrap",gap:4}}>
+          display:"flex",flexDirection:"column",gap:5}}>
           {fired.map((mod,i)=>{
             const mf=fmtMod(mod);
             return(
-              <span key={i} style={{fontSize:9,padding:"1px 6px",borderRadius:8,
-                background:mod.pct>0?"rgba(61,217,122,.12)":"rgba(230,57,70,.12)",
-                color:mod.pct>0?C.win:C.lose,fontFamily:F,letterSpacing:.2}}>
-                {mf.isLarge?"⚡":"→"} {mf.text}
-              </span>
+              <div key={i}>
+                <span style={{fontSize:9,padding:"1px 6px",borderRadius:8,
+                  background:mod.pct>0?"rgba(61,217,122,.12)":"rgba(230,57,70,.12)",
+                  color:mod.pct>0?C.win:C.lose,fontFamily:F,letterSpacing:.2}}>
+                  {mf.isLarge?"⚡":"→"} {mf.text}
+                </span>
+                {mod.flavour&&(
+                  <div style={{fontSize:10,color:C.dim,fontFamily:F,
+                    fontStyle:"italic",lineHeight:1.45,marginTop:3,paddingLeft:1}}>
+                    {mod.flavour}
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
@@ -603,6 +701,7 @@ function RWC70() {
   const [matchResults, setMatchResults] = useState([]);
   const [curMatch, setCurMatch] = useState(null);
   const [ladder, setLadder] = useState([]);
+  const [spinLock, setSpinLock] = useState(null); // "team" | "year" | null
   const spinRef = useRef(null);
 
   const makeDeal = useCallback((exclude=[]) => {
@@ -614,6 +713,7 @@ function RWC70() {
   }, []);
 
   const doSpin = useCallback((exclude=usedSquads) => {
+    setSpinLock(null);
     setSpinning(true); setPhase("spinning");
     let count=0;
     const interval=setInterval(()=>{
@@ -633,14 +733,23 @@ function RWC70() {
     return {y, t, units};
   }, []);
 
-  const spinTo = useCallback((y, t) => {
+  // lock="team" → team card stays fixed, year animates
+  // lock="year" → year card stays fixed, team animates
+  const spinTo = useCallback((y, t, lock=null) => {
+    setSpinLock(lock);
     setSpinning(true); setPhase("spinning");
     let count=0;
     const interval=setInterval(()=>{
-      const s=rand(ALL_SQUADS); setReelDisplay({team:s.t, year:s.y}); count++;
+      const s=rand(ALL_SQUADS);
+      setReelDisplay({
+        team: lock==="team" ? t : s.t,
+        year: lock==="year" ? y : s.y,
+      });
+      count++;
       if(count>=12){
         clearInterval(interval);
         setDeal(makeDealFor(y,t)); setReelDisplay({team:t,year:y});
+        setSpinLock(null);
         setSpinning(false); setPhase("pick");
       }
     },70);
@@ -649,19 +758,20 @@ function RWC70() {
 
   const startGame = () => {
     setRoster({}); setUsedSquads([]); setYearSkipUsed(false); setTeamSkipUsed(false);
-    setMatchIdx(0); setMatchResults([]); setCurMatch(null); setLadder([]); doSpin([]);
+    setMatchIdx(0); setMatchResults([]); setCurMatch(null); setLadder([]); setSpinLock(null);
+    doSpin([]);
   };
   const goHome = () => setPhase("intro");
 
   const yearOptions = deal ? [2011,2015,2019,2023].filter(y =>
     y!==deal.y && DATA[y]?.[deal.t] && !usedSquads.some(s=>s.y===y&&s.t===deal.t)) : [];
   const canYearSkip = !yearSkipUsed && !spinning && yearOptions.length>0;
-  const changeYear = () => { if(!canYearSkip)return; setYearSkipUsed(true); spinTo(rand(yearOptions),deal.t); };
+  const changeYear = () => { if(!canYearSkip)return; setYearSkipUsed(true); spinTo(rand(yearOptions),deal.t,"team"); };
 
   const teamOptions = deal ? Object.keys(DATA[deal.y]||{}).filter(t =>
     t!==deal.t && !usedSquads.some(s=>s.y===deal.y&&s.t===t)) : [];
   const canTeamSkip = !teamSkipUsed && !spinning && teamOptions.length>0;
-  const changeTeam = () => { if(!canTeamSkip)return; setTeamSkipUsed(true); spinTo(deal.y,rand(teamOptions)); };
+  const changeTeam = () => { if(!canTeamSkip)return; setTeamSkipUsed(true); spinTo(deal.y,rand(teamOptions),"year"); };
 
   const pickUnit = (gk) => {
     if (roster[gk]||!deal) return;
@@ -721,9 +831,9 @@ function RWC70() {
   if (phase==="intro") return (
     <div style={base}><style>{gStyles}</style>
     <div style={{...wrap,textAlign:"center",paddingTop:32}}>
-      <div style={{fontSize:96,fontWeight:800,letterSpacing:-4,color:C.gold,
-        fontFamily:F,lineHeight:.9,marginBottom:10}}>7-0</div>
-      <div style={{fontSize:14,fontWeight:700,color:C.muted,letterSpacing:3,
+      <div style={{fontSize:60,fontWeight:800,letterSpacing:-2,color:C.gold,
+        fontFamily:F,lineHeight:.9,marginBottom:10}}>RWC Challenge</div>
+      <div style={{fontSize:13,fontWeight:700,color:C.muted,letterSpacing:2,
         marginBottom:36,textTransform:"uppercase"}}>Rugby World Cup XV Builder</div>
       <div style={{background:C.card,borderRadius:16,padding:24,
         border:`1px solid ${C.border}`,marginBottom:16,textAlign:"left"}}>
@@ -756,7 +866,7 @@ function RWC70() {
         </div>
         <div style={{marginTop:12,paddingTop:12,borderTop:`1px solid ${C.border}`,
           fontSize:10,color:C.dim,fontFamily:"monospace",lineHeight:1.8}}>
-          Each squad carries a unique modifier (→ 5% or ⚡ 15%) that fires during the gauntlet.<br/>
+          Each squad carries a unique modifier (→ 10% or ⚡ 25%) that fires during the gauntlet.<br/>
           one ⟳ YEAR skip · one ⟳ TEAM skip per game
         </div>
       </div>
@@ -774,15 +884,26 @@ function RWC70() {
         <HomeBtn/>
       </div>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14,marginBottom:28}}>
-        {[["TEAM",reelDisplay.team,TEAM_COL[reelDisplay.team]||C.gold],
-          ["YEAR",String(reelDisplay.year),C.atk]].map(([l,v,c])=>(
+        {[
+          ["TEAM", spinLock==="team" ? (deal?.t||reelDisplay.team) : reelDisplay.team,
+           spinLock==="team" ? (TEAM_COL[deal?.t]||C.gold) : (TEAM_COL[reelDisplay.team]||C.gold),
+           spinLock==="team"],
+          ["YEAR", spinLock==="year" ? String(deal?.y||reelDisplay.year) : String(reelDisplay.year),
+           C.atk, spinLock==="year"],
+        ].map(([l,v,c,fixed])=>(
           <div key={l} style={{background:C.card,borderRadius:14,padding:"24px 16px",
             border:`3px solid ${c}`,textAlign:"center",minHeight:120,
-            display:"flex",flexDirection:"column",justifyContent:"center"}}>
+            display:"flex",flexDirection:"column",justifyContent:"center",
+            boxShadow: fixed?`0 0 0 2px ${c}33,0 4px 24px rgba(0,0,0,.4)`:`0 0 20px rgba(0,0,0,.4)`}}>
             <div style={{fontSize:10,fontWeight:700,color:c,letterSpacing:2,
-              textTransform:"uppercase",marginBottom:10}}>{l}</div>
+              textTransform:"uppercase",marginBottom:10}}>
+              {l}{fixed&&<span style={{marginLeft:5,fontSize:8,opacity:.7}}>✓</span>}
+            </div>
             <div style={{fontSize:l==="TEAM"&&v.length>8?18:24,fontWeight:800,
-              color:C.text,fontFamily:F,lineHeight:1.1,opacity:.65}}>{v||"·"}</div>
+              color:C.text,fontFamily:F,lineHeight:1.1,
+              opacity: fixed ? 1 : 0.65}}>
+              {v||"·"}
+            </div>
           </div>
         ))}
       </div>
@@ -978,10 +1099,10 @@ function RWC70() {
           {7-totalWins}
         </div>
         {is70&&<div style={{fontSize:18,color:C.gold,fontWeight:800,
-          letterSpacing:1,marginBottom:8}}>🏆 UNBEATEN. YOU WENT 7-0.</div>}
+          letterSpacing:1,marginBottom:8}}>🏆 UNBEATEN. YOU WENT 7-0!</div>}
         <div style={{fontSize:14,color:C.muted,marginBottom:28,lineHeight:1.65}}>
           {is70?"The rarest of feats — a perfect World Cup XV gauntlet.":
-           totalWins>=5?"Strong effort. Fell just short of 7-0 immortality.":
+           totalWins>=5?"Strong effort. Fell just short of an unbeaten run.":
            totalWins>=3?"A decent XV — but the greats got you.":"Back to the drawing board."}
         </div>
         <div style={{marginBottom:18,textAlign:"left",background:C.card,
@@ -1021,7 +1142,7 @@ function RWC70() {
           fontSize:15,fontWeight:700,cursor:"pointer",fontFamily:F,letterSpacing:.5,
           background:"transparent",color:C.dim,border:`1px solid ${C.border}`}}>← Home</button>
         <div style={{marginTop:16,fontSize:9,color:C.dim,fontFamily:"monospace"}}>
-          7-0.com · rugby world cup xv builder</div>
+          RWC Challenge · rugby world cup xv builder</div>
       </div></div>
     );
   }
